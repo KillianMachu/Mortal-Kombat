@@ -3,9 +3,9 @@
 ## Participants  
 
 ### Équipe Web  
-1. **[Machu Killian - Web]**  
-2. **[Souplet Julien - Web]**  
+1. **Machu Killian**  
+2. **Souplet Julien**  
 
 ### Équipe Multimédia  
-1. **[Delaneuville Théo - Multimédia]**  
-2. **[Delmote Axel - Multimédia]**  
+1. **Delaneuville Théo**  
+2. **Delmote Axel**  
