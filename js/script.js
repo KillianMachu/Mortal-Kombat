@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     gsap.registerPlugin(ScrollTrigger);
 
+    // Affichage des éléments sur au début
     const intro = () => {
         const timeline = gsap.timeline({
             defaults: { ease: "power2.inOut", duration: 1 },
@@ -41,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 9)
     }
 
+    // Animation de la planche de BD
     const animateBackground = () => {
         const timeline = gsap.timeline({
             defaults: { ease: "power2.inOut", duration: 1 },
@@ -66,6 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     };
 
+    // Animation des différentes vignettes de la page
     const content = () => {
 
         gsap.fromTo("#case1",
@@ -73,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
             { yPercent: 0, opacity: 1, duration: 1, ease: "power2.out" }
         );
 
+        // Animation des 2 premières vignettes
         const timeline = gsap.timeline({
             scrollTrigger: {
                 trigger: "#cases-1-2",
@@ -90,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         timeline.to({}, { duration: .2 });
 
+        // Animation des vignettes 3 et 4
         const timeline2 = gsap.timeline({
             scrollTrigger: {
                 trigger: "#cases-3-4",
@@ -118,6 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "-=2"
         );
 
+        // Animation des vignettes 5 et 6
         const timeline3 = gsap.timeline({
             scrollTrigger: {
                 trigger: "#cases-5-6",
@@ -170,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "-=2"
         );
 
+        // Animation de la vignette 7
         const timeline4 = gsap.timeline({
             scrollTrigger: {
                 trigger: "#cases-7",
@@ -177,6 +184,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 end: "+=200%",
                 pin: true,
                 scrub: true,
+            },
+            onComplete: () => {
+                document.querySelector(".bottom").classList.remove("hidden");
             }
         });
         
@@ -187,6 +197,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ScrollTrigger.refresh();
     };
+
+    // Bouton pour revoir l'histoire depuis l'animation du début
+    const restartAnimations = () => {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        gsap.globalTimeline.clear();
+
+        document.querySelector(".background").classList.add("hidden");
+        document.querySelector(".content").classList.add("hidden");
+        document.querySelector(".bottom").classList.add("hidden");
+
+        intro();
+    };
+
+    document.querySelector("#restart-button").addEventListener("click", restartAnimations);
 
     intro();
 });
